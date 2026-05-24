@@ -809,13 +809,8 @@
             <input type="text" id="c_name" class="form-control" placeholder="예: 주식회사 에이치 / 홍길동 이사" required>
           </div>
           <div class="form-group">
-            <label for="c_category" data-lang-key="f_label_category">문의 분야 *</label>
-            <select id="c_category" class="form-control select-control" required>
-              <option value="" disabled selected data-lang-key="f_select_default">문의 분야를 선택해 주세요</option>
-              <option value="consulting" data-lang-key="f_select_opt1">비즈니스 컨설팅 의뢰</option>
-              <option value="development" data-lang-key="f_select_opt2">앱 · 웹 개발 프로젝트 의뢰</option>
-              <option value="partnership" data-lang-key="f_select_opt3">기타 비즈니스 협업 및 제휴 제안</option>
-            </select>
+            <label for="c_subject" data-lang-key="f_label_category">문의 제목 *</label>
+            <input type="text" id="c_subject" class="form-control" placeholder="예: 신규 플랫폼 개발 협업 제안" data-lang-placeholder="f_placeholder_subject" required>
           </div>
           <div class="form-group">
             <label for="c_msg" data-lang-key="f_label_message">문의 내용 *</label>
@@ -883,11 +878,8 @@
         c_desc: "에스프로비즈와 새로운 비즈니스 시너지를 만들고 싶으시거나 비즈니스 진단, IT 프로젝트 개발 의뢰를 제안하실 파트너사께서는 아래 양식을 작성해 주시면 검토 후 회신드리겠습니다.",
         c_email_label: "공식 이메일",
         f_label_name: "업체명 및 담당자 성함 *",
-        f_label_category: "문의 분야 *",
-        f_select_default: "문의 분야를 선택해 주세요",
-        f_select_opt1: "비즈니스 컨설팅 의뢰",
-        f_select_opt2: "앱 · 웹 개발 프로젝트 의뢰",
-        f_select_opt3: "기타 비즈니스 협업 및 제휴 제안",
+        f_label_category: "문의 제목 *",
+        f_placeholder_subject: "예: 신규 플랫폼 개발 협업 제안",
         f_label_message: "문의 내용 *",
         f_btn_submit: "문의 제출하기",
         foot_terms: "이용약관",
@@ -924,11 +916,8 @@
         c_desc: "To create new corporate synergy, request business diagnosis, or initiate digital projects, please submit the form below. We will get in touch shortly.",
         c_email_label: "Official Email",
         f_label_name: "Company & Person in Charge *",
-        f_label_category: "Request Domain *",
-        f_select_default: "Select Enquiry Category",
-        f_select_opt1: "Business Consulting",
-        f_select_opt2: "Web / Mobile Development",
-        f_select_opt3: "Corporate Synergy / Alliance Proposals",
+        f_label_category: "Subject *",
+        f_placeholder_subject: "e.g., Proposal for new platform development",
         f_label_message: "Your Message *",
         f_btn_submit: "Submit Enquiry",
         foot_terms: "Terms of Use",
@@ -973,6 +962,15 @@
           // Fade back in
           el.classList.remove('fade-hidden');
         });
+
+        // Change inputs placeholders from dictionary
+        const placeholdersToTranslate = document.querySelectorAll('[data-lang-placeholder]');
+        placeholdersToTranslate.forEach(el => {
+          const key = el.getAttribute('data-lang-placeholder');
+          if (LANG_DATA[lang][key]) {
+            el.placeholder = LANG_DATA[lang][key];
+          }
+        });
       }, 180);
     }
 
@@ -981,7 +979,7 @@
       e.preventDefault();
       
       const name = document.getElementById('c_name').value;
-      const category = document.getElementById('c_category').value;
+      const subject = document.getElementById('c_subject').value;
       const message = document.getElementById('c_msg').value;
 
       // In real-world, we send this data to back-end or sprobiz@naver.com.
