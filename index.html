@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주식회사 에스프로비즈 | Sprobiz Co., Ltd.</title>
+  <meta name="description" content="에스프로비즈는 독자적인 전문성을 바탕으로 비즈니스 컨설팅, 자체 부동산 투자, 그리고 디지털 혁신을 주도하는 앱/웹 개발 사업을 영위하는 프리미엄 비즈니스 솔루션 그룹입니다." />
+  <meta name="keywords" content="에스프로비즈, Sprobiz, 비즈니스 컨설팅, 부동산 투자, 앱 개발, 웹 개발, 디지털 트랜스포메이션" />
+  
+  <!-- Web Fonts: Inter for elegant technical displays -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons weights -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+
+  <style>
+    /* Reset & Base Setup */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+      background-color: #08090a;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", sans-serif;
+      color: #f3f4f6;
+      background-color: #08090a;
+      line-height: 1.6;
+      word-break: keep-all;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    /* Grid Line Architecture Utility */
+    .container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    /* 1px Thin Lines (newrun.io Inspired) */
+    .grid-border-bottom {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .grid-border-top {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Language Swapping Transition CSS */
+    .lang-fade {
+      transition: opacity 0.18s ease-in-out, transform 0.18s ease-in-out;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .lang-fade.fade-hidden {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    /* Header Nav */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(8, 9, 10, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .nav-wrap {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo span {
+      background: linear-gradient(135deg, #ffffff 30%, #a1a1aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .logo::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: #3b82f6;
+      border-radius: 2px;
+    }
+    
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #9ca3af;
+    }
+    .nav-menu a:hover {
+      color: #ffffff;
+    }
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+    }
+
+    /* Micro Language Switcher Capsule */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .lang-btn {
+      padding: 6px 14px;
+      border-radius: 99px;
+      cursor: pointer;
+      color: #6b7280;
+      transition: all 0.2s ease;
+    }
+    .lang-btn:hover {
+      color: #ffffff;
+    }
+    .lang-btn.active {
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 200px 0 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Subtle glowing tech lighting */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -300px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+    }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: #3b82f6;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .eyebrow::after {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background-color: rgba(59, 130, 246, 0.4);
+    }
+    .hero h1 {
+      font-size: clamp(38px, 5.5vw, 68px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 32px;
+    }
+    .hero h1 span {
+      background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0.6) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: clamp(16px, 1.5vw, 19px);
+      font-weight: 400;
+      line-height: 1.7;
+      color: #9ca3af;
+      max-width: 780px;
+      margin-bottom: 48px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 28px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background-color: #3b82f6;
+      color: #ffffff;
+      border: 1px solid #3b82f6;
+    }
+    .btn-primary:hover {
+      background-color: #2563eb;
+      border-color: #2563eb;
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background-color: transparent;
+      color: #f1f5f9;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    @media (max-width: 640px) {
+      .hero-actions {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* 3 Pillars Grid Section (Editorial Layout) */
+    .pillars-section {
+      padding: 0;
+      position: relative;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .pillar-card {
+      padding: 80px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 480px;
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
+    .pillar-card:not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .pillar-card:hover {
+      background-color: rgba(255, 255, 255, 0.015);
+    }
+    .pillar-num {
+      font-size: 12px;
+      font-weight: 800;
+      color: #3b82f6;
+      letter-spacing: 0.1em;
+      margin-bottom: 40px;
+    }
+    .pillar-body h3 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .pillar-body p {
+      font-size: 15px;
+      color: #9ca3af;
+      line-height: 1.65;
+    }
+    .pillar-footer {
+      margin-top: 60px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      opacity: 0.7;
+      transition: all 0.2s ease;
+    }
+    .pillar-card:hover .pillar-footer {
+      color: #3b82f6;
+      opacity: 1;
+      gap: 12px;
+    }
+
+    @media (max-width: 1024px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .pillar-card {
+        padding: 60px 24px;
+        min-height: auto;
+      }
+      .pillar-card:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .pillar-footer {
+        margin-top: 40px;
+      }
+    }
+
+    /* Philosophy / Corporate Strength Section */
+    .strength-section {
+      padding: 120px 0;
+      background: radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.03) 0%, transparent 60%);
+    }
+    .strength-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 80px;
+    }
+    .strength-title h2 {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+    .strength-title h2 span {
+      color: #3b82f6;
+    }
+    .strength-list {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .strength-item {
+      display: flex;
+      gap: 24px;
+    }
+    .strength-icon {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3b82f6;
+      font-size: 20px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .strength-info h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .strength-info p {
+      font-size: 15px;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1024px) {
+      .strength-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+      .strength-section {
+        padding: 80px 0;
+      }
+    }
+
+    /* Contact & Form Section */
+    .contact-section {
+      padding: 120px 0;
+      position: relative;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: flex-start;
+    }
+    .contact-info {
+      position: sticky;
+      top: 140px;
+    }
+    .contact-info h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+    .contact-info p {
+      font-size: 16px;
+      color: #9ca3af;
+      margin-bottom: 48px;
+      max-width: 460px;
+    }
+    .email-display-card {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background-color: rgba(255, 255, 255, 0.01);
+      border-radius: 4px;
+    }
+    .email-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #6b7280;
+      text-transform: uppercase;
+    }
+    .email-value-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .email-value {
+      font-size: clamp(18px, 1.8vw, 22px);
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Inter', monospace;
+    }
+    .copy-btn {
+      background: none;
+      border: none;
+      color: #3b82f6;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .copy-btn:hover {
+      color: #60a5fa;
+      transform: scale(1.1);
+    }
+    .copy-btn:active {
+      transform: scale(0.95);
+    }
+    
+    /* Sleek technical form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background-color: rgba(255, 255, 255, 0.01);
+      border-radius: 4px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #9ca3af;
+    }
+    .form-control {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      padding: 16px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .form-control:focus {
+      border-color: #3b82f6;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    .select-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 16px;
+      padding-right: 40px;
+    }
+    .form-control::placeholder {
+      color: #4b5563;
+    }
+    textarea.form-control {
+      resize: none;
+      min-height: 140px;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background-color: #3b82f6;
+      border: 1px solid #3b82f6;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 12px;
+    }
+    .submit-btn:hover {
+      background-color: #2563eb;
+      border-color: #2563eb;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+      .contact-info {
+        position: static;
+      }
+      .contact-form {
+        padding: 24px;
+      }
+      .contact-section {
+        padding: 80px 0;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      padding: 60px 0;
+      background-color: #040405;
+      color: #4b5563;
+      font-size: 13px;
+    }
+    .footer-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 800;
+      color: #9ca3af;
+      letter-spacing: -0.03em;
+    }
+    .footer-logo::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #3b82f6;
+      border-radius: 1px;
+      margin-right: 6px;
+    }
+    .footer-info {
+      line-height: 1.8;
+    }
+    .footer-info span {
+      display: inline-block;
+      margin-right: 20px;
+    }
+    .footer-info span strong {
+      color: #9ca3af;
+      font-weight: 500;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .footer-legal-links a {
+      margin-right: 16px;
+    }
+    .footer-legal-links a:hover {
+      color: #9ca3af;
+    }
+    @media (max-width: 640px) {
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Nav -->
+  <header class="header">
+    <div class="container nav-wrap">
+      <a href="#top" class="logo" aria-label="Sprobiz Home">
+        <span>SPROBIZ</span>
+      </a>
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="#about" data-lang-key="nav_about">소개</a>
+        <a href="#pillars" data-lang-key="nav_pillars">사업 분야</a>
+        <a href="#contact" data-lang-key="nav_contact">파트너십 문의</a>
+      </nav>
+      
+      <!-- Bilingual Switcher Capsule -->
+      <div class="lang-switcher" aria-label="Language Switcher">
+        <div class="lang-btn active" onclick="switchLanguage('ko')" id="btn-ko">KO</div>
+        <div class="lang-btn" onclick="switchLanguage('en')" id="btn-en">EN</div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    
+    <!-- Hero Section -->
+    <section class="hero grid-border-bottom">
+      <div class="container hero-content">
+        <div class="eyebrow lang-fade" data-lang-key="hero_eyebrow">CORPORATE VALUE</div>
+        <h1 class="lang-fade">
+          <span data-lang-key="hero_title">성공적인 비즈니스와<br>자산 성장을 위한<br>프리미엄 솔루션 그룹</span>
+        </h1>
+        <p class="lang-fade" data-lang-key="hero_subtitle">
+          주식회사 에스프로비즈는 독자적인 전문성을 바탕으로 파트너사의 본질적 경영 성장을 돕는 비즈니스 컨설팅, 미래 우량 가치를 발굴하는 자체 부동산 투자, 그리고 비즈니스 디지털 전환을 구현하는 앱/웹 테크 개발을 영위하는 프리미엄 법인 그룹입니다.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary" data-lang-key="hero_btn_primary">파트너십 문의 의뢰 <i class="ph-bold ph-arrow-right"></i></a>
+          <a href="#pillars" class="btn btn-secondary" data-lang-key="hero_btn_secondary">사업 영역 둘러보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Pillars Grid Section (Editorial Layout) -->
+    <section id="pillars" class="pillars-section grid-border-bottom">
+      <div class="pillars-grid">
+        
+        <!-- Column 1: Business Consulting -->
+        <article class="pillar-card">
+          <div class="pillar-num">01 / CONSULTING</div>
+          <div class="pillar-body">
+            <h3 class="lang-fade" data-lang-key="p1_title">비즈니스 컨설팅</h3>
+            <p class="lang-fade" data-lang-key="p1_desc">
+              기업의 본질적 가치 진단과 사업 모델 고도화, 타깃 마켓 분석 및 브랜드 전략 수립을 통해 장기적 성장 모멘텀과 혁신적인 스케일업을 지원합니다.
+            </p>
+          </div>
+          <a href="#contact" class="pillar-footer">
+            <span data-lang-key="p_more">문의하기</span> <i class="ph-bold ph-arrow-up-right"></i>
+          </a>
+        </article>
+
+        <!-- Column 2: Real Estate Investment -->
+        <article class="pillar-card">
+          <div class="pillar-num">02 / REAL ESTATE</div>
+          <div class="pillar-body">
+            <h3 class="lang-fade" data-lang-key="p2_title">부동산 투자</h3>
+            <p class="lang-fade" data-lang-key="p2_desc">
+              철저한 데이터 마켓 분석 및 미래 가치 평가를 기반으로 유망한 상업용/수익형 부동산을 자체 매입하고 개발함으로써 에스프로비즈만의 단단하고 안정적인 실물 자산 포트폴리오를 지속적으로 확장해 나갑니다.
+            </p>
+          </div>
+          <a href="#contact" class="pillar-footer">
+            <span data-lang-key="p_more">문의하기</span> <i class="ph-bold ph-arrow-up-right"></i>
+          </a>
+        </article>
+
+        <!-- Column 3: Tech Development -->
+        <article class="pillar-card">
+          <div class="pillar-num">03 / DIGITAL TECH</div>
+          <div class="pillar-body">
+            <h3 class="lang-fade" data-lang-key="p3_title">앱 · 웹 개발</h3>
+            <p class="lang-fade" data-lang-key="p3_desc">
+              비즈니스의 가치를 높이는 고성능 브랜드 웹사이트부터 사용자 경험(UX) 중심의 정교한 모바일 앱 기획·구축까지, 에스프로비즈의 테크 솔루션으로 완벽한 디지털 트랜스포메이션(DX)을 구현합니다.
+            </p>
+          </div>
+          <a href="#contact" class="pillar-footer">
+            <span data-lang-key="p_more">문의하기</span> <i class="ph-bold ph-arrow-up-right"></i>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Strength & Philosophy Section -->
+    <section id="about" class="strength-section grid-border-bottom">
+      <div class="container strength-grid">
+        <div class="strength-title">
+          <h2 class="lang-fade">
+            <span data-lang-key="strength_title_span">Sprobiz Co., Ltd.</span><br>
+            <span data-lang-key="strength_title_rest">혁신적 아이디어와 단단한 신뢰가 공존하는 그룹</span>
+          </h2>
+        </div>
+        <div class="strength-list">
+          
+          <!-- Strength 1 -->
+          <div class="strength-item">
+            <div class="strength-icon"><i class="ph-bold ph-lightbulb"></i></div>
+            <div class="strength-info">
+              <h4 class="lang-fade" data-lang-key="s1_title">본질 중심의 맞춤형 경영 진단</h4>
+              <p class="lang-fade" data-lang-key="s1_desc">형식적인 보고서를 배제하고, 파트너사의 상황을 현미경처럼 정밀 진단하여 실제 실행 가능한 마케팅과 구조적 성장 전략을 도출합니다.</p>
+            </div>
+          </div>
+
+          <!-- Strength 2 -->
+          <div class="strength-item">
+            <div class="strength-icon"><i class="ph-bold ph-chart-line-up"></i></div>
+            <div class="strength-info">
+              <h4 class="lang-fade" data-lang-key="s2_title">안정적인 자체 실물 자산 포트폴리오</h4>
+              <p class="lang-fade" data-lang-key="s2_desc">자체적인 우량 부동산 자산 투자와 개발을 영위함으로써 탄탄한 재무 건전성을 확보하며, 이는 파트너 비즈니스를 지원할 수 있는 강력한 토대가 됩니다.</p>
+            </div>
+          </div>
+
+          <!-- Strength 3 -->
+          <div class="strength-item">
+            <div class="strength-icon"><i class="ph-bold ph-cpu"></i></div>
+            <div class="strength-info">
+              <h4 class="lang-fade" data-lang-key="s3_title">최첨단 풀스택 테크놀로지 구현</h4>
+              <p class="lang-fade" data-lang-key="s3_desc">기획부터 UI/UX 디자인, 프론트엔드 및 백엔드 개발까지 외주 없이 원스톱 테크 역량을 가집니다. 이를 통해 타사보다 압도적으로 정교하고 가벼운 플랫폼을 빌드합니다.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Form Section -->
+    <section id="contact" class="contact-section">
+      <div class="container contact-grid">
+        
+        <div class="contact-info">
+          <h2 class="lang-fade" data-lang-key="c_title">파트너십 문의</h2>
+          <p class="lang-fade" data-lang-key="c_desc">
+            에스프로비즈와 새로운 비즈니스 시너지를 만들고 싶으시거나 비즈니스 진단, IT 프로젝트 개발 의뢰를 제안하실 파트너사께서는 아래 양식을 작성해 주시면 검토 후 회신드리겠습니다.
+          </p>
+          
+          <div class="email-display-card">
+            <span class="email-label" data-lang-key="c_email_label">OFFICIAL EMAIL</span>
+            <div class="email-value-wrap">
+              <span class="email-value" id="sprobiz-email">sprobiz@naver.com</span>
+              <button class="copy-btn" onclick="copyEmail()" aria-label="Copy email address" title="Copy Email">
+                <i class="ph-bold ph-copy" id="copy-icon"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label for="c_name" data-lang-key="f_label_name">업체명 및 담당자 성함 *</label>
+            <input type="text" id="c_name" class="form-control" placeholder="예: 주식회사 에이치 / 홍길동 이사" required>
+          </div>
+          <div class="form-group">
+            <label for="c_category" data-lang-key="f_label_category">문의 분야 *</label>
+            <select id="c_category" class="form-control select-control" required>
+              <option value="" disabled selected data-lang-key="f_select_default">문의 분야를 선택해 주세요</option>
+              <option value="consulting" data-lang-key="f_select_opt1">비즈니스 컨설팅 의뢰</option>
+              <option value="development" data-lang-key="f_select_opt2">앱 · 웹 개발 프로젝트 의뢰</option>
+              <option value="partnership" data-lang-key="f_select_opt3">기타 비즈니스 협업 및 제휴 제안</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="c_msg" data-lang-key="f_label_message">문의 내용 *</label>
+            <textarea id="c_msg" class="form-control" placeholder="파트너십의 목표 또는 현재 비즈니스의 고민을 자유롭게 기재해 주세요." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" data-lang-key="f_btn_submit">문의 제출하기</button>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <div class="footer-top">
+        <strong class="footer-logo">SPROBIZ CO., LTD.</strong>
+        <div class="footer-legal-links">
+          <a href="#" data-lang-key="foot_terms">이용약관</a>
+          <a href="#" style="font-weight: 700; color: #9ca3af;" data-lang-key="foot_privacy">개인정보처리방침</a>
+        </div>
+      </div>
+      <div class="footer-info">
+        <span><strong>상호명</strong> 주식회사 에스프로비즈</span>
+        <span><strong>사업 구분</strong> 법인사업자</span>
+        <span><strong>주요 업무</strong> 비즈니스 컨설팅 · 부동산 투자 · 앱/웹 플랫폼 개발</span><br>
+        <span><strong>공식 이메일</strong> <a href="mailto:sprobiz@naver.com" style="text-decoration: underline;">sprobiz@naver.com</a></span>
+      </div>
+      <div class="footer-bottom">
+        <span data-lang-key="foot_copyright">Copyright © Sprobiz Co., Ltd. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bilingual JavaScript Logic -->
+  <script>
+    // Language dictionaries
+    const LANG_DATA = {
+      ko: {
+        nav_about: "소개",
+        nav_pillars: "사업 분야",
+        nav_contact: "파트너십 문의",
+        hero_eyebrow: "주식회사 에스프로비즈",
+        hero_title: "성공적인 비즈니스와<br>자산 성장을 위한<br>프리미엄 솔루션 그룹",
+        hero_subtitle: "주식회사 에스프로비즈는 독자적인 전문성을 바탕으로 파트너사의 본질적 경영 성장을 돕는 비즈니스 컨설팅, 미래 우량 가치를 발굴하는 자체 부동산 투자, 그리고 비즈니스 디지털 전환을 구현하는 앱/웹 테크 개발을 영위하는 프리미엄 법인 그룹입니다.",
+        hero_btn_primary: "파트너십 문의 의뢰",
+        hero_btn_secondary: "사업 영역 둘러보기",
+        p1_title: "비즈니스 컨설팅",
+        p1_desc: "기업의 본질적 가치 진단과 사업 모델 고도화, 타깃 마켓 분석 및 브랜드 전략 수립을 통해 장기적 성장 모멘텀과 혁신적인 스케일업을 지원합니다.",
+        p2_title: "부동산 투자",
+        p2_desc: "철저한 데이터 마켓 분석 및 미래 가치 평가를 기반으로 유망한 상업용/수익형 부동산을 자체 매입하고 개발함으로써 에스프로비즈만의 단단하고 안정적인 실물 자산 포트폴리오를 지속적으로 확장해 나갑니다.",
+        p3_title: "앱 · 웹 개발",
+        p3_desc: "비즈니스의 가치를 높이는 고성능 브랜드 웹사이트부터 사용자 경험(UX) 중심의 정교한 모바일 앱 기획·구축까지, 에스프로비즈의 테크 솔루션으로 완벽한 디지털 트랜스포메이션(DX)을 구현합니다.",
+        p_more: "문의하기",
+        strength_title_span: "Sprobiz Co., Ltd.",
+        strength_title_rest: "혁신적 아이디어와 단단한 신뢰가 공존하는 그룹",
+        s1_title: "본질 중심의 맞춤형 경영 진단",
+        s1_desc: "형식적인 보고서를 배제하고, 파트너사의 상황을 현미경처럼 정밀 진단하여 실제 실행 가능한 마케팅과 구조적 성장 전략을 도출합니다.",
+        s2_title: "안정적인 자체 실물 자산 포트폴리오",
+        s2_desc: "자체적인 우량 부동산 자산 투자와 개발을 영위함으로써 탄탄한 재무 건전성을 확보하며, 이는 파트너 비즈니스를 지원할 수 있는 강력한 토대가 됩니다.",
+        s3_title: "최첨단 풀스택 테크놀로지 구현",
+        s3_desc: "기획부터 UI/UX 디자인, 프론트엔드 및 백엔드 개발까지 외주 없이 원스톱 테크 역량을 가집니다. 이를 통해 타사보다 압도적으로 정교하고 가벼운 플랫폼을 빌드합니다.",
+        c_title: "파트너십 문의",
+        c_desc: "에스프로비즈와 새로운 비즈니스 시너지를 만들고 싶으시거나 비즈니스 진단, IT 프로젝트 개발 의뢰를 제안하실 파트너사께서는 아래 양식을 작성해 주시면 검토 후 회신드리겠습니다.",
+        c_email_label: "공식 이메일",
+        f_label_name: "업체명 및 담당자 성함 *",
+        f_label_category: "문의 분야 *",
+        f_select_default: "문의 분야를 선택해 주세요",
+        f_select_opt1: "비즈니스 컨설팅 의뢰",
+        f_select_opt2: "앱 · 웹 개발 프로젝트 의뢰",
+        f_select_opt3: "기타 비즈니스 협업 및 제휴 제안",
+        f_label_message: "문의 내용 *",
+        f_btn_submit: "문의 제출하기",
+        foot_terms: "이용약관",
+        foot_privacy: "개인정보처리방침",
+        foot_copyright: "Copyright © Sprobiz Co., Ltd. All rights reserved.",
+        submit_alert: "문의가 성공적으로 접수되었습니다.\n담당자가 내용을 검토한 후 sprobiz@naver.com 또는 기재해 주신 연락 정보를 통해 회신드리겠습니다. 감사합니다.",
+        copy_success: "이메일 주소가 클립보드에 복사되었습니다."
+      },
+      en: {
+        nav_about: "Overview",
+        nav_pillars: "Core Businesses",
+        nav_contact: "Partnership",
+        hero_eyebrow: "Sprobiz Co., Ltd.",
+        hero_title: "Premium Solutions<br>for Business &<br>Asset Scalability",
+        hero_subtitle: "Sprobiz Co., Ltd. is a premium corporate solution group that drives business scale-up through elite consulting, expands stable tangible portfolios via proprietary real estate investments, and implements ultimate digital transformation (DX) with high-performance web/app engineering.",
+        hero_btn_primary: "Request Partnership",
+        hero_btn_secondary: "Explore Sectors",
+        p1_title: "Business Consulting",
+        p1_desc: "We diagnose corporate identity, refine business models, and analyze target markets to construct growth engines and facilitate exceptional market scale-up.",
+        p2_title: "Real Estate Investment",
+        p2_desc: "Based on algorithmic market data analysis, we acquire and develop premium commercial and high-yield real estate directly, consistently expanding Sprobiz's robust proprietary asset portfolio.",
+        p3_title: "App & Web Tech",
+        p3_desc: "From extreme-speed branding websites to fully customized iOS & Android mobile systems, Sprobiz builds seamless, lightweight, and premium digital solutions.",
+        p_more: "Enquire Now",
+        strength_title_span: "Sprobiz Co., Ltd.",
+        strength_title_rest: "A Group Fusing Innovation with Concrete Trust",
+        s1_title: "Execution-First Consulting",
+        s1_desc: "We abandon formal templates. We diagnose the partner company with microscopic precision to construct actionable strategies and growth systems.",
+        s2_title: "Proprietary Real Estate Assets",
+        s2_desc: "Operating an independent and lucrative real estate development portfolio secures Sprobiz's deep financial health, providing a robust base to support partner firms.",
+        s3_title: "Full-Stack Native Technologies",
+        s3_desc: "With UI/UX, front-end, and back-end engineered entirely in-house, we construct clean codebases and highly responsive web/app platforms.",
+        c_title: "Partnership Enquiries",
+        c_desc: "To create new corporate synergy, request business diagnosis, or initiate digital projects, please submit the form below. We will get in touch shortly.",
+        c_email_label: "Official Email",
+        f_label_name: "Company & Person in Charge *",
+        f_label_category: "Request Domain *",
+        f_select_default: "Select Enquiry Category",
+        f_select_opt1: "Business Consulting",
+        f_select_opt2: "Web / Mobile Development",
+        f_select_opt3: "Corporate Synergy / Alliance Proposals",
+        f_label_message: "Your Message *",
+        f_btn_submit: "Submit Enquiry",
+        foot_terms: "Terms of Use",
+        foot_privacy: "Privacy Policy",
+        foot_copyright: "Copyright © Sprobiz Co., Ltd. All rights reserved.",
+        submit_alert: "Your inquiry has been successfully received.\nOur team will review your message and reply back via sprobiz@naver.com or your provided details. Thank you.",
+        copy_success: "Email address copied to clipboard."
+      }
+    };
+
+    let currentLang = 'ko';
+
+    function switchLanguage(lang) {
+      if (lang === currentLang) return;
+      
+      const elementsToTranslate = document.querySelectorAll('[data-lang-key]');
+      
+      // Apply fade-hidden class to initiate smooth transition
+      elementsToTranslate.forEach(el => {
+        el.classList.add('lang-fade', 'fade-hidden');
+      });
+
+      setTimeout(() => {
+        currentLang = lang;
+        
+        // Active buttons state switcher
+        document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        
+        // Change text content from dictionary
+        elementsToTranslate.forEach(el => {
+          const key = el.getAttribute('data-lang-key');
+          if (LANG_DATA[lang][key]) {
+            // Check if it is input/select placeholder
+            if (el.tagName === 'OPTION') {
+              el.text = LANG_DATA[lang][key];
+            } else {
+              el.innerHTML = LANG_DATA[lang][key];
+            }
+          }
+          
+          // Fade back in
+          el.classList.remove('fade-hidden');
+        });
+      }, 180);
+    }
+
+    // Submit handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('c_name').value;
+      const category = document.getElementById('c_category').value;
+      const message = document.getElementById('c_msg').value;
+
+      // In real-world, we send this data to back-end or sprobiz@naver.com.
+      // For now we show the customized premium response in selected language.
+      alert(LANG_DATA[currentLang].submit_alert);
+      
+      // Reset form
+      e.target.reset();
+    }
+
+    // Copy to clipboard helper
+    function copyEmail() {
+      const emailText = document.getElementById('sprobiz-email').innerText;
+      
+      navigator.clipboard.writeText(emailText).then(() => {
+        const copyIcon = document.getElementById('copy-icon');
+        
+        // Success animation
+        copyIcon.className = "ph-bold ph-check-circle";
+        copyIcon.style.color = "#10b981";
+        
+        alert(LANG_DATA[currentLang].copy_success);
+        
+        setTimeout(() => {
+          copyIcon.className = "ph-bold ph-copy";
+          copyIcon.style.color = "";
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
