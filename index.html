@@ -476,25 +476,22 @@
       }
     }
 
-    /* Contact & Form Section */
+    /* Contact Section */
     .contact-section {
       padding: 120px 0;
       position: relative;
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 80px;
-      align-items: flex-start;
+    .contact-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .contact-info {
-      position: sticky;
-      top: 140px;
-    }
-
-    .contact-info h2 {
+    .contact-wrap h2 {
       font-size: clamp(32px, 4vw, 48px);
       font-weight: 800;
       letter-spacing: -0.02em;
@@ -502,28 +499,41 @@
       margin-bottom: 24px;
     }
 
-    .contact-info p {
+    .contact-wrap p {
       font-size: 16px;
       color: #9ca3af;
-      margin-bottom: 48px;
-      max-width: 460px;
+      margin-bottom: 40px;
+      max-width: 600px;
+      line-height: 1.7;
     }
 
     .email-display-card {
       display: inline-flex;
       flex-direction: column;
+      align-items: center;
       gap: 10px;
-      padding: 24px;
+      padding: 32px 48px;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      background-color: rgba(255, 255, 255, 0.01);
-      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.015);
+      border-radius: 6px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .email-display-card:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      background-color: rgba(255, 255, 255, 0.025);
+      box-shadow: 0 15px 40px rgba(59, 130, 246, 0.05);
+      transform: translateY(-2px);
     }
 
     .email-label {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.1em;
-      color: #6b7280;
+      color: #3b82f6;
       text-transform: uppercase;
     }
 
@@ -534,8 +544,8 @@
     }
 
     .email-value {
-      font-size: clamp(18px, 1.8vw, 22px);
-      font-weight: 700;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 800;
       color: #ffffff;
       font-family: 'Inter', monospace;
     }
@@ -545,7 +555,7 @@
       border: none;
       color: #3b82f6;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 20px;
       padding: 4px;
       display: flex;
       align-items: center;
@@ -560,23 +570,6 @@
 
     .copy-btn:active {
       transform: scale(0.95);
-    }
-
-    /* Sleek technical form */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      padding: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background-color: rgba(255, 255, 255, 0.01);
-      border-radius: 4px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
     }
 
     .form-group label {
@@ -642,21 +635,11 @@
     }
 
     @media (max-width: 1024px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-      }
-
-      .contact-info {
-        position: static;
-      }
-
-      .contact-form {
-        padding: 24px;
-      }
-
       .contact-section {
         padding: 80px 0;
+      }
+      .email-display-card {
+        padding: 24px 32px;
       }
     }
 
@@ -801,9 +784,6 @@
               기업의 본질적 가치 진단과 사업 모델 고도화, 타깃 마켓 분석 및 브랜드 전략 수립을 통해 장기적 성장 모멘텀과 혁신적인 스케일업을 지원합니다.
             </p>
           </div>
-          <a href="#contact" class="pillar-footer">
-            <span data-lang-key="p_more">문의하기</span> <i class="ph-bold ph-arrow-up-right"></i>
-          </a>
         </article>
 
         <!-- Column 2: Real Estate Investment -->
@@ -816,9 +796,6 @@
               나갑니다.
             </p>
           </div>
-          <a href="#contact" class="pillar-footer">
-            <span data-lang-key="p_more">문의하기</span> <i class="ph-bold ph-arrow-up-right"></i>
-          </a>
         </article>
 
         <!-- Column 3: Tech Development -->
@@ -831,9 +808,6 @@
               구현합니다.
             </p>
           </div>
-          <a href="#contact" class="pillar-footer">
-            <span data-lang-key="p_more">문의하기</span> <i class="ph-bold ph-arrow-up-right"></i>
-          </a>
         </article>
 
       </div>
@@ -884,45 +858,23 @@
       </div>
     </section>
 
-    <!-- Contact & Form Section -->
+    <!-- Contact Section -->
     <section id="contact" class="contact-section">
-      <div class="container contact-grid">
+      <div class="container contact-wrap">
+        <h2 class="lang-fade" data-lang-key="c_title">파트너십 문의</h2>
+        <p class="lang-fade" data-lang-key="c_desc">
+          에스프로비즈와 새로운 비즈니스 시너지를 만들고 싶으시거나 비즈니스 진단, IT 프로젝트 개발 의뢰를 제안하실 파트너사께서는 아래 공식 이메일로 연락주시면 신속히 검토 후 회신드리겠습니다.
+        </p>
 
-        <div class="contact-info">
-          <h2 class="lang-fade" data-lang-key="c_title">파트너십 문의</h2>
-          <p class="lang-fade" data-lang-key="c_desc">
-            에스프로비즈와 새로운 비즈니스 시너지를 만들고 싶으시거나 비즈니스 진단, IT 프로젝트 개발 의뢰를 제안하실 파트너사께서는 아래 양식을 작성해 주시면 검토 후 회신드리겠습니다.
-          </p>
-
-          <div class="email-display-card">
-            <span class="email-label" data-lang-key="c_email_label">공식 이메일</span>
-            <div class="email-value-wrap">
-              <span class="email-value" id="sprobiz-email">sprobiz@naver.com</span>
-              <button class="copy-btn" onclick="copyEmail()" aria-label="Copy email address" title="Copy Email">
-                <i class="ph-bold ph-copy" id="copy-icon"></i>
-              </button>
-            </div>
+        <div class="email-display-card">
+          <span class="email-label" data-lang-key="c_email_label">공식 이메일</span>
+          <div class="email-value-wrap">
+            <span class="email-value" id="sprobiz-email">sprobiz@naver.com</span>
+            <button class="copy-btn" onclick="copyEmail()" aria-label="Copy email address" title="Copy Email">
+              <i class="ph-bold ph-copy" id="copy-icon"></i>
+            </button>
           </div>
         </div>
-
-        <form class="contact-form" onsubmit="handleContactSubmit(event)">
-          <div class="form-group">
-            <label for="c_name" data-lang-key="f_label_name">업체명 및 담당자 성함 *</label>
-            <input type="text" id="c_name" class="form-control" placeholder="예: 주식회사 에이치 / 홍길동 이사" required>
-          </div>
-          <div class="form-group">
-            <label for="c_subject" data-lang-key="f_label_category">문의 제목 *</label>
-            <input type="text" id="c_subject" class="form-control" placeholder="예: 신규 플랫폼 개발 협업 제안"
-              data-lang-placeholder="f_placeholder_subject" required>
-          </div>
-          <div class="form-group">
-            <label for="c_msg" data-lang-key="f_label_message">문의 내용 *</label>
-            <textarea id="c_msg" class="form-control" placeholder="파트너십의 목표 또는 현재 비즈니스의 고민을 자유롭게 기재해 주세요."
-              required></textarea>
-          </div>
-          <button type="submit" class="submit-btn" data-lang-key="f_btn_submit">문의 제출하기</button>
-        </form>
-
       </div>
     </section>
 
@@ -972,23 +924,9 @@
         p2_desc: "철저한 데이터 마켓 분석 및 미래 가치 평가를 기반으로 유망한 상업용/수익형 부동산을 자체 매입하고 개발함으로써 에스프로비즈만의 단단하고 안정적인 실물 자산 포트폴리오를 지속적으로 확장해 나갑니다.",
         p3_title: "앱 · 웹 개발",
         p3_desc: "비즈니스의 가치를 높이는 고성능 브랜드 웹사이트부터 사용자 경험(UX) 중심의 정교한 모바일 앱 기획·구축까지, 에스프로비즈의 테크 솔루션으로 완벽한 디지털 트랜스포메이션(DX)을 구현합니다.",
-        p_more: "문의하기",
-        strength_title_span: "Sprobiz Co., Ltd.",
-        strength_title_rest: "혁신적 아이디어와 단단한 신뢰가 공존하는 그룹",
-        s1_title: "본질 중심의 맞춤형 경영 진단",
-        s1_desc: "형식적인 보고서를 배제하고, 파트너사의 상황을 현미경처럼 정밀 진단하여 실제 실행 가능한 마케팅과 구조적 성장 전략을 도출합니다.",
-        s2_title: "안정적인 자체 실물 자산 포트폴리오",
-        s2_desc: "자체적인 우량 부동산 자산 투자와 개발을 영위함으로써 탄탄한 재무 건전성을 확보하며, 이는 파트너 비즈니스를 지원할 수 있는 강력한 토대가 됩니다.",
-        s3_title: "최첨단 풀스택 테크놀로지 구현",
-        s3_desc: "기획부터 UI/UX 디자인, 프론트엔드 및 백엔드 개발까지 외주 없이 원스톱 테크 역량을 가집니다. 이를 통해 타사보다 압도적으로 정교하고 가벼운 플랫폼을 빌드합니다.",
         c_title: "파트너십 문의",
-        c_desc: "에스프로비즈와 새로운 비즈니스 시너지를 만들고 싶으시거나 비즈니스 진단, IT 프로젝트 개발 의뢰를 제안하실 파트너사께서는 아래 양식을 작성해 주시면 검토 후 회신드리겠습니다.",
+        c_desc: "에스프로비즈와 새로운 비즈니스 시너지를 만들고 싶으시거나 비즈니스 진단, IT 프로젝트 개발 의뢰를 제안하실 파트너사께서는 아래 공식 이메일로 연락주시면 신속히 검토 후 회신드리겠습니다.",
         c_email_label: "공식 이메일",
-        f_label_name: "업체명 및 담당자 성함 *",
-        f_label_category: "문의 제목 *",
-        f_placeholder_subject: "예: 신규 플랫폼 개발 협업 제안",
-        f_label_message: "문의 내용 *",
-        f_btn_submit: "문의 제출하기",
         foot_terms: "이용약관",
         foot_privacy: "개인정보처리방침",
         foot_company: "<strong>상호명</strong> 주식회사 에스프로비즈",
@@ -998,7 +936,6 @@
         foot_address: "<strong>주소</strong> 인천광역시 연수구 컨벤시아대로 81, 5층 (송도동, 드림시티)",
         foot_email: "<strong>공식 이메일</strong> <a href='mailto:sprobiz@naver.com' style='text-decoration: underline;'>sprobiz@naver.com</a>",
         foot_copyright: "Copyright © Sprobiz Co., Ltd. All rights reserved.",
-        submit_alert: "문의가 성공적으로 접수되었습니다.\n담당자가 내용을 검토한 후 sprobiz@naver.com 또는 기재해 주신 연락 정보를 통해 회신드리겠습니다. 감사합니다.",
         copy_success: "이메일 주소가 클립보드에 복사되었습니다."
       },
       en: {
@@ -1016,7 +953,6 @@
         p2_desc: "Based on algorithmic market data analysis, we acquire and develop premium commercial and high-yield real estate directly, consistently expanding Sprobiz's robust proprietary asset portfolio.",
         p3_title: "App & Web Tech",
         p3_desc: "From extreme-speed branding websites to fully customized iOS & Android mobile systems, Sprobiz builds seamless, lightweight, and premium digital solutions.",
-        p_more: "Enquire Now",
         strength_title_span: "Sprobiz Co., Ltd.",
         strength_title_rest: "A Group Fusing Innovation with Concrete Trust",
         s1_title: "Execution-First Consulting",
@@ -1026,13 +962,8 @@
         s3_title: "Full-Stack Native Technologies",
         s3_desc: "With UI/UX, front-end, and back-end engineered entirely in-house, we construct clean codebases and highly responsive web/app platforms.",
         c_title: "Partnership Enquiries",
-        c_desc: "To create new corporate synergy, request business diagnosis, or initiate digital projects, please submit the form below. We will get in touch shortly.",
+        c_desc: "To create new corporate synergy, request business diagnosis, or initiate digital projects, please contact us via our official email address. We will review and reply shortly.",
         c_email_label: "Official Email",
-        f_label_name: "Company & Person in Charge *",
-        f_label_category: "Subject *",
-        f_placeholder_subject: "e.g., Proposal for new platform development",
-        f_label_message: "Your Message *",
-        f_btn_submit: "Submit Enquiry",
         foot_terms: "Terms of Use",
         foot_privacy: "Privacy Policy",
         foot_company: "<strong>Company</strong> Sprobiz Co., Ltd.",
@@ -1042,7 +973,6 @@
         foot_address: "<strong>Address</strong> 5F, Dream City, 81 Convensia-daero, Yeonsu-gu, Incheon, Republic of Korea",
         foot_email: "<strong>Email</strong> <a href='mailto:sprobiz@naver.com' style='text-decoration: underline;'>sprobiz@naver.com</a>",
         foot_copyright: "Copyright © Sprobiz Co., Ltd. All rights reserved.",
-        submit_alert: "Your inquiry has been successfully received.\nOur team will review your message and reply back via sprobiz@naver.com or your provided details. Thank you.",
         copy_success: "Email address copied to clipboard."
       }
     };
@@ -1093,21 +1023,7 @@
       }, 180);
     }
 
-    // Submit handler
-    function handleContactSubmit(e) {
-      e.preventDefault();
 
-      const name = document.getElementById('c_name').value;
-      const subject = document.getElementById('c_subject').value;
-      const message = document.getElementById('c_msg').value;
-
-      // In real-world, we send this data to back-end or sprobiz@naver.com.
-      // For now we show the customized premium response in selected language.
-      alert(LANG_DATA[currentLang].submit_alert);
-
-      // Reset form
-      e.target.reset();
-    }
 
     // Copy to clipboard helper
     function copyEmail() {
